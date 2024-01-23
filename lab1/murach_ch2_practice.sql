@@ -7,6 +7,6 @@
 -- order by vendor_name
 
 --11.
--- select count(*) as number_of_invoices,
---     sum(invoice_total) as grand_invoice_total
--- from invoices;
+select count(*) as number_of_invoices,
+    sum(invoice_total) as grand_invoice_total
+from invoices;

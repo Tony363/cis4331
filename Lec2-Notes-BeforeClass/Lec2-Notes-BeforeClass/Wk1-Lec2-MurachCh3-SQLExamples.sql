@@ -15,34 +15,34 @@
 SELECT  *  
 FROM  invoices;
 
---selected columns and sorted query result
---Print the invoice numbers, invoice dates, invoice totals of all invoices
---Sort the result in the increasing order of invoice total amounts
-SELECT  invoice_number, invoice_date, invoice_total 
-FROM  invoices
-ORDER BY invoice_total;
+-- --selected columns and sorted query result
+-- --Print the invoice numbers, invoice dates, invoice totals of all invoices
+-- --Sort the result in the increasing order of invoice total amounts
+-- SELECT  invoice_number, invoice_date, invoice_total 
+-- FROM  invoices
+-- ORDER BY invoice_total;
 
---display a math expression and only a subset of rows from a table
---print the invoice id, invoice total, and the sum of customer's credit and payment
--- of invoice with id 17.
-SELECT invoice_id, invoice_total,  (credit_total + payment_total) 
-FROM invoices
-WHERE invoice_id = 17;
+-- --display a math expression and only a subset of rows from a table
+-- --print the invoice id, invoice total, and the sum of customer's credit and payment
+-- -- of invoice with id 17.
+-- SELECT invoice_id, invoice_total,  (credit_total + payment_total) 
+-- FROM invoices
+-- WHERE invoice_id = 17;
 
---print the same data as above, but use AS keyword to rename the heading of 
---   the displayed column (credit_total + payment_total) as TOTAL_CREDITS
--- to make the report look nicer
-SELECT invoice_id, invoice_total, 
-           (credit_total + payment_total) AS  total_credits
-FROM invoices
-WHERE invoice_id = 17;
+-- --print the same data as above, but use AS keyword to rename the heading of 
+-- --   the displayed column (credit_total + payment_total) as TOTAL_CREDITS
+-- -- to make the report look nicer
+-- SELECT invoice_id, invoice_total, 
+--            (credit_total + payment_total) AS  total_credits
+-- FROM invoices
+-- WHERE invoice_id = 17;
 
--- AS keyword: optional
---print the same data as above, but do not use AS keyword for the column alias
-SELECT invoice_id, invoice_total, 
-           (credit_total + payment_total)   total_credits
-FROM invoices
-WHERE invoice_id = 17;
+-- -- AS keyword: optional
+-- --print the same data as above, but do not use AS keyword for the column alias
+-- SELECT invoice_id, invoice_total, 
+--            (credit_total + payment_total)   total_credits
+-- FROM invoices
+-- WHERE invoice_id = 17;
 
 
 
