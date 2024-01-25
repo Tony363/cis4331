@@ -227,3 +227,12 @@ SELECT vendor_name, vendor_contact_last_name ||' ' ||  vendor_contact_first_name
     vendor_city || ', ' || vendor_state || ' ' || vendor_zip_code AS address
 FROM vendors
 ORDER BY vendor_contact_last_name  ||' ' || vendor_contact_first_name;
+
+
+--1/25/2024 additional
+select distinct vendor_city
+from vendors
+-- where vendor_city like 'Ch%'
+where vendor_city like '_a%' --exactly 1 character then a then whatever
+-- where vendor_city like '__a%'
+order by vendor_city;

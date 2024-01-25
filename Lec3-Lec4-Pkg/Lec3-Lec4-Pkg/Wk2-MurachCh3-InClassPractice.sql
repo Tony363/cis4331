@@ -10,9 +10,6 @@
 
 --Run the statements using user AP unless otherwise indicated.
 
-
-select * from emp;
-select * from dept;
 --1.
 --print names, dept numbers of employees supervised by manager with id 7839
 --  in the increasing order of employee names
@@ -44,7 +41,10 @@ FROM  emp;
 --4.
 --use the tables in user EX
 --print the first names, last names of customers whose first name start with Jo
-
+SELECT CUSTOMER_FIRST_NAME, CUSTOMER_LAST_NAME
+from CUSTOMERS_EX
+where CUSTOMER_FIRST_NAME like 'Jo%'
+order by CUSTOMER_FIRST_NAME;
 
 
 --5.
@@ -58,6 +58,11 @@ FROM  emp;
 -- Principal    Interest Amount      Total Payment    Today
 --   20000        1200                 21200          29-JAN-19
 
+SELECT 20000 AS "Principal",
+    20000 * 0.06 AS "Interest Amount", 
+    20000 * 1.06 AS "Total Payment", 
+    SYSDATE AS "Today"
+FROM DUAL;
 
 
 --6. 
@@ -67,3 +72,13 @@ FROM  emp;
 ---Sample Output
 -----System Date
 -----28-jan-2020 13:46:05
+--FORMAT(CURRENT_TIMESTAMP, 'yyyy-MM-dd hh:mm:ss tt')
+-- ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
+select TO_CHAR(SYSDATE,'DD-mon-YYYY hh12:mm:ss') AS "System Date"
+from DUAL;
+
+
+
+-- PAY ATTENTION TO NULLs!!!
+select comm, NVL(comm,0),NVL(TO_CHAR(MGR),'NO MGR')
+from emp;
