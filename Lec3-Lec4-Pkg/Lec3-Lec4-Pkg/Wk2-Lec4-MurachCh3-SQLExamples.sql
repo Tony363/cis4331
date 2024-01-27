@@ -232,7 +232,9 @@ ORDER BY vendor_contact_last_name  ||' ' || vendor_contact_first_name;
 --1/25/2024 additional
 select distinct vendor_city
 from vendors
+-- where VENDOR_CITY like '%or'
 -- where vendor_city like 'Ch%'
-where vendor_city like '_a%' --exactly 1 character then a then whatever
+-- where vendor_city like '_a%' --exactly 1 character then a then whatever
 -- where vendor_city like '__a%'
+where vendor_city like '___ %'
 order by vendor_city;

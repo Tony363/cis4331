@@ -74,7 +74,9 @@ FROM DUAL;
 -----28-jan-2020 13:46:05
 --FORMAT(CURRENT_TIMESTAMP, 'yyyy-MM-dd hh:mm:ss tt')
 -- ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
-select TO_CHAR(SYSDATE,'DD-mon-YYYY hh12:mm:ss') AS "System Date"
+-- select TO_CHAR(SYSDATE,'DD-mon-YYYY hh12:mm:ss') AS "System Date"
+-- select TO_CHAR(SYSDATE,'DD-MON-YYYY hh12:mm:ss') AS "System Date"
+select TO_CHAR(SYSDATE,'Month Day Year') AS "System Date"
 from DUAL;
 
 
@@ -82,3 +84,5 @@ from DUAL;
 -- PAY ATTENTION TO NULLs!!!
 select comm, NVL(comm,0),NVL(TO_CHAR(MGR),'NO MGR')
 from emp;
+
+select vendor_name, upper(vendor_name),lower(vendor_name), initcap(vendor_name) from vendors;
