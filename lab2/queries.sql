@@ -10,8 +10,8 @@ order by DISCOUNT_PERCENT ASC, product_id DESC;
 SELECT last_name || ', ' || first_name as "customer_name"
 from customers_MGS
 -- where FIRST_NAME  LIKE '[A-B]%';
-WHERE last_name >= 'B%' AND first_name <= 'T%'
-order by first_name ASC;
+WHERE last_name >= 'B%' AND last_name <= 'T%'
+order by last_name DESC;
 
 --Q3
 select product_code,DISCOUNT_PERCENT,date_added
@@ -20,14 +20,41 @@ where DISCOUNT_PERCENT > 20 and DISCOUNT_PERCENT <= 30
 order by date_added DESC;
 
 --Q4
-select product_name || ' was $' || list_price || ', now is ' || '$' || list_price*(DISCOUNT_PERCENT/100) as "actual_price"
+select product_name || ' was $' || list_price || ', now is ' || '$' || (list_price - list_price*(DISCOUNT_PERCENT/100)) as "actual_price"
 from PRODUCTS_MGS
 where rownum <= 3
 order by "actual_price" DESC;
 
---Q5 TODO wtf
-select item_id,item_price, discount_amount,
+--Q5 
+-- select 
+--     b.item_id,
+--     query.item_price,
+--     query.discount_amount,
+--     query.total_price_before_discount,
+--     query.total_discount_amount
+-- from (
+--     select 
+--         item_price,
+--         discount_amount,
+--         sum(item_price) total_price_before_discount,
+--         sum(discount_amount) total_discount_amount
+--     from order_items_mgs
+--     group by item_price,discount_amount
+--     having sum(discount_amount) >= 600
+--     order by sum(discount_amount) desc
+-- ) query
+-- join order_items_mgs b on query.item_price = b.item_price
+-- order by query.total_discount_amount desc;
+
+select 
+    item_id
+    item_price,
+    discount_amount,
+    item_price*quantity as total_price_before_discount,
+    discount_amount*quantity total_discount_amount
 from order_items_mgs
+where discount_amount*quantity >= 600
+order by total_discount_amount desc;
 
 
 --Q6
