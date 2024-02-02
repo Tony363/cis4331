@@ -36,9 +36,10 @@ order by remaining_balance;
 -- Sort the result first by vendor name, then by invoice date, then by invoice number,
 --    then by invoice sequence number. All sorting are in increasing orders.
 
-select v.vendor_name,i.
-from invoices_archive i 
-inner join vendors v on on i.vendor_id = v.vendor_id
+select v.vendor_name,ia.invoice_date,ia.invoice_number,li.invoice_sequence,li.line_item_amt
+from invoices ia 
+inner join vendors v on ia.vendor_id = v.vendor_id
+inner join invoice_line_items li on li.invoice_id = ia.invoice_id
 
 --3.
 --Print the vendor ids, vendor names, vendor contact first and last names of vendors that 
@@ -46,6 +47,14 @@ inner join vendors v on on i.vendor_id = v.vendor_id
 --Print the vendor contact's first and last name in this format:
 --    Steve Jobs
 --Print the heading for the vendor contact's first and last name as Contact Name.
+
+select v2.vendor_id, v2.vendor_name, 
+    v2.vendor_contact_first_name || ' ' || v2.vendor_contact_last_name as contact_name
+from vendors v1 
+inner join vendors v2 
+on v1.vendor_contact_last_name = v2.vendor_contact_last_name
+    and v1.vendor_id <> v2.vendor_id
+-- where v1.vendor_contact_last_name = v2.vendor_contact_last_name
 
    
      
