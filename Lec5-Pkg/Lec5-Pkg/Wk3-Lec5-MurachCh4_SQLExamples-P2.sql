@@ -1,3 +1,4 @@
+
 --Week 3, Lec 5, Murach Ch4, Part 2
 --SQL Examples demoed in class
 

@@ -1,3 +1,4 @@
+
 DROP TABLE emp;
 
 DROP TABLE dept;
