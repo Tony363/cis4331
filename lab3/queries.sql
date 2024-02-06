@@ -1,6 +1,7 @@
-SELECT TABLE_NAME
-FROM ALL_TAB_COLUMNS
-WHERE COLUMN_NAME = 'ORDER_ID'
+-- search system queries
+-- SELECT TABLE_NAME
+-- FROM ALL_TAB_COLUMNS
+-- WHERE COLUMN_NAME = 'BILLING_ADDRESS_ID';
 
 
 
@@ -60,7 +61,8 @@ select
     am.zip_code
 from addresses_mgs am 
 inner join customers_mgs cm
-on cm.customer_id = am.customer_id
+    on cm.customer_id = am.customer_id 
+    AND cm.billing_address_id = am.address_id
 order by am.state,am.city
 
 --Q6
@@ -74,24 +76,17 @@ inner join orders_mgs om
 on cm.customer_id = om.customer_id
 
 --Q7 TODO wtf
-select * from orders_mgs
-select * from addresses_mgs
-select * from products_mgs
-select * from order_items_mgs
-select * from customers_mgs
 
 select
     cm.email_address,
     om.ship_date,
-    pm.product_id,
+    oim.product_id,
     (oim.item_price-oim.discount_amount)*oim.quantity actual_price
-from customers_mgs cm
-inner join orders_mgs om
-    on cm.customer_id = om.customer_id
+from orders_mgs om
 inner join order_items_mgs oim
     on om.order_id = oim.order_id
-inner join products_mgs pm
-    on pm.product_id = oim.product_id
+inner join customers_mgs cm
+    on cm.customer_id = om.customer_id
 
 --Q8 TODO WTF why need self join?
 select
