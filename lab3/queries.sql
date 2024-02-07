@@ -14,7 +14,7 @@ select
     am.state
 from addresses_mgs am
 where am.LINE1 like '%wood%'
-order by am.state,am.city
+order by am.state,am.city;
 
 --Q2
 
@@ -27,7 +27,6 @@ where cm.first_name like '__r%'
 order by cm.first_name
 
 --Q3
-select * from products_mgs
 select
     pm.product_name,
     pm.list_price,
@@ -75,7 +74,7 @@ from customers_mgs cm
 inner join orders_mgs om 
 on cm.customer_id = om.customer_id
 
---Q7 TODO wtf
+--Q7 
 
 select
     cm.email_address,
@@ -89,12 +88,15 @@ inner join customers_mgs cm
     on cm.customer_id = om.customer_id
 
 --Q8 TODO WTF why need self join?
-select
-    pm.product_code,
-    pm.product_name,
-    pm.discount_percent
-from products_mgs pm
-where pm.discount_percent = 30
-order by pm.product_code
+select distinct
+    p1.product_code,
+    p1.product_name,
+    p1.discount_percent
+from products_mgs p1
+inner join products_mgs p2
+    on p1.discount_percent = p2.discount_percent
+    and p1.product_code <> p2.product_code
+    and p1.product_name <> p2.product_name
+order by p1.product_code
 
 

@@ -5,14 +5,31 @@
 
 --Continued from Lec 5.
 
+SELECT TABLE_NAME
+FROM ALL_TAB_COLUMNS
+WHERE COLUMN_NAME = 'DEPARTMENT';
 
 --4
 --Print the names of employees in department 30 and the names of their managers. 
---DEPT AMP tables
-select e.last_name || ' ' || e.first_name,
+--DEPT AMP tables TODO
+select e.last_name || ' ' || e.first_name as "employee", 
+    e.last_name || ' ' || e.first_name as "manager"
 from employees e
-inner join 
-where e.department=30 and e.
+inner join dept d
+    on e.department_number = d.deptno
+where e.department_number=30 and e.manager_id = d.manager_id;
+
+
+--4-5 print the names of employees and the names of their manageers
+select * from emp
+select * from dept
+
+select 
+    e.ename as "employee",
+    m.ename as "manager"
+from emp e
+left join emp m
+    on e.mgr = m.empno
 
 
 --5
@@ -24,10 +41,17 @@ select gla.account_number,gla.account_description,ili.invoice_id
 from general_ledger_accounts gla
 inner join invoice_line_items ili on gla.account_number = ili.account_number
 
-SELECT * FROM COLS WHERE COLUMN_NAME = 'MANAGER_ID'
 
 --6.
 --Print the account numbers and descriptions of general ledger accounts 
 --   that were not used in any purchase
 
 
+select 
+    gla.account_number, 
+    account_description
+    -- invoice_id
+from general_ledger_accounts gla 
+left outer join invoice_line_items il
+    on (gla.account_number = il.account_number)
+where il.account_number is null;
