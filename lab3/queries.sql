@@ -100,3 +100,42 @@ inner join products_mgs p2
 order by p1.product_code
 
 
+-- INIT database
+CREATE TABLE store (
+    store_id varchar(255),
+    store_name varchar(255),
+    store_zip int,
+    region_id varchar(255),
+    PRIMARY KEY (store_id)
+); 
+
+INSERT INTO store(
+  store_id, 
+  store_name,
+  store_zip,
+  region_id
+) VALUES ('S1', 'Mozarts Music Store',19122,'R1');
+
+INSERT INTO store(
+  store_id, 
+  store_name,
+  store_zip,
+  region_id
+) VALUES ('S2', 'Adams guitar store',33172,'R2');
+
+INSERT INTO store(
+  store_id, 
+  store_name,
+  store_zip,
+  region_id
+) VALUES ('S3', 'Liz piano store',10023,'R1');
+
+-- QUERY database
+SELECT * FROM store;
+
+SELECT s1.store_id s, s2.store_id ss
+FROM   store s1 
+inner JOIN store s2
+          ON s1.region_id = s2.region_id;
+
+drop table store
