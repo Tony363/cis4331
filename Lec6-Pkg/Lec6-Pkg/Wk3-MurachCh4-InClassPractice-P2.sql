@@ -12,24 +12,23 @@ WHERE COLUMN_NAME = 'DEPARTMENT';
 --4
 --Print the names of employees in department 30 and the names of their managers. 
 --DEPT AMP tables TODO
+
 select e.last_name || ' ' || e.first_name as "employee", 
     e.last_name || ' ' || e.first_name as "manager"
-from employees e
+from emp e
 inner join dept d
     on e.department_number = d.deptno
 where e.department_number=30 and e.manager_id = d.manager_id;
 
 
 --4-5 print the names of employees and the names of their manageers
-select * from emp
-select * from dept
 
 select 
     e.ename as "employee",
     m.ename as "manager"
 from emp e
 left join emp m
-    on e.mgr = m.empno
+    on e.mgr = m.empno;
 
 
 --5
