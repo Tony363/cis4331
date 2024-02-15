@@ -4,21 +4,20 @@
 
 --Run all queries as user AP
 
-SELECT TABLE_NAME
-FROM ALL_TAB_COLUMNS
-WHERE COLUMN_NAME = 'VENDOR_ID';
+-- SELECT TABLE_NAME
+-- FROM ALL_TAB_COLUMNS
+-- WHERE COLUMN_NAME = 'VENDOR_ID';
 
 
 --1.
 --For each vendor that has at least one invoice, print its vendor id, 
 --   and total invoice amount of all invoices for this vendor.
+
 select 
-    v.vendor_id,
+    i.invoice_id,
     sum(i.invoice_total) as total_invoice_amount
-from vendors v
-inner join invoices i
-    on v.vendor_id = i.vendor_id
-group by v.vendor_id
+from invoices i
+group by i.invoice_id
 having count(i.VENDOR_ID) > 0
 
 
@@ -30,14 +29,14 @@ having count(i.VENDOR_ID) > 0
 --  the total payment amount of all its invoices.
 --Sort the result in decreasing order of the total payment amount.
 select 
-    v.vendor_id,
+    -- v.vendor_id,
     v.vendor_name,
-    sum(i.invoice_total) as "total_invoice_amount"
+    sum(i.payment_total) as "total_invoice_amount"
 from vendors v
 inner join invoices i
     on v.vendor_id = i.vendor_id
-group by v.vendor_id,v.vendor_name
-order by  sum(i.invoice_total) desc
+group by v.vendor_name
+order by sum(i.payment_total) desc
 
 
 --3.
@@ -50,7 +49,7 @@ order by  sum(i.invoice_total) desc
 select 
     v.vendor_name,
     count(i.invoice_id) as "invoice_count",
-    sum(i.invoice_total) as "total_invoice_amount"
+    sum(i.payment_total) as "total_invoice_amount"
 from vendors v
 inner join invoices i
     on v.vendor_id = i.vendor_id

@@ -3,7 +3,6 @@
 
 --Continued
 --Covered topics: GROUP BY, HAVING, WHERE in summary queries
-
 --Run all queries as user AP
 
 --5.
