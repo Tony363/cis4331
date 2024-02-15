@@ -48,12 +48,12 @@ having count(distinct gla.account_number) > 1
 
 select 
     v.vendor_name,
-    count(*) as "DIFF_ACCT_COUNT"
+    count(distinct il.account_number) as "DIFF_ACCT_COUNT"
 from invoice_line_items il 
 inner join invoices i 
     on il.invoice_id = i.invoice_id
 inner join vendors v
     on i.vendor_id = v.vendor_id
 group by v.vendor_name
-having count(*) > 1;
+having count(distinct il.account_number) > 1;
     

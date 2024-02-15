@@ -97,8 +97,8 @@ order by customer_id;
     om.order_id,
     om.customer_id,
     'shipped' ship_status,
-    -- om.order_date
-    to_char(om.order_date,'DD-MON-YY') as order_date1
+    om.order_date
+    -- to_char(om.order_date,'DD-MON-YY') as order_date1
 from orders_mgs om
 where om.ship_date is not NULL
 union
@@ -106,8 +106,8 @@ select
     om1.order_id,
     om1.customer_id,
     'NOT shipped' ship_status,
-    -- om1.order_date
-    to_char(om1.order_date,'DD-MON-YY') order_date
+    om1.order_date
+    -- to_char(om1.order_date,'DD-MON-YY') order_date
 from orders_mgs om1
 where om1.ship_date is NULL)
--- order by order_date1; -- fixed, is this what you wanted? i just add a semicolon lolz
+order by order_date; 
