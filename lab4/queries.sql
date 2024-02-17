@@ -92,13 +92,13 @@ where cm2.email_address like '%gmail.com')
 order by customer_id;
 
 --Q7
+select * from orders_mgs
 
 (select 
     om.order_id,
     om.customer_id,
     'shipped' ship_status,
     om.order_date
-    -- to_char(om.order_date,'DD-MON-YY') as order_date1
 from orders_mgs om
 where om.ship_date is not NULL
 union
@@ -107,7 +107,6 @@ select
     om1.customer_id,
     'NOT shipped' ship_status,
     om1.order_date
-    -- to_char(om1.order_date,'DD-MON-YY') order_date
 from orders_mgs om1
 where om1.ship_date is NULL)
 order by order_date; 
