@@ -14,7 +14,8 @@ select
     pm.PRODUCT_NAME
 from products_mgs pm
 inner join categories_mgs cm
-on pm.CATEGORY_ID = cm.CATEGORY_ID;
+on pm.CATEGORY_ID = cm.CATEGORY_ID
+order by pm.CATEGORY_ID
 
 --Q2
 select  
@@ -24,8 +25,8 @@ select
     pm.PRODUCT_NAME
 from products_mgs pm
 right join categories_mgs cm
-on pm.CATEGORY_ID = cm.CATEGORY_ID;
-
+on pm.CATEGORY_ID = cm.CATEGORY_ID
+order by cm.CATEGORY_ID
 
 --Q3 
 
@@ -35,10 +36,11 @@ select distinct
     -- pm.product_id,
     -- pm.PRODUCT_NAME
 from categories_mgs cm
-full outer join products_mgs pm
+left outer join products_mgs pm
 on pm.CATEGORY_ID = cm.CATEGORY_ID
 where pm.product_id is null
-    and pm.PRODUCT_NAME is null;
+    and pm.PRODUCT_NAME is null
+order by cm.CATEGORY_ID
 
 --Q4
 (select 
