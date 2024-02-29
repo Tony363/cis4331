@@ -7,22 +7,22 @@
 
 --Q1
 select 
-    count(om.CUSTOMER_ID) order_count,
+    count(*) order_count,
     sum(om.TAX_AMOUNT) total_tax
 from orders_mgs om
 
 --Q2
 
 select 
-    count(*),
-    sum(om.tax_amount)
+    count(*) visa_order_count,
+    sum(om.tax_amount) visa_total_tax
 from orders_mgs om
 where om.card_type = 'Visa'
 
 --Q3
 select 
     om.card_type,
-    count(om.card_type) card_order_count,
+    count(*) card_order_count,
     sum(om.tax_amount) card_total_tax
 from orders_mgs om
 group by om.card_type
@@ -30,7 +30,7 @@ group by om.card_type
 --Q4
 select 
     cm.category_name,
-    count(cm.category_name) product_count,
+    count(*) product_count,
     max(pm.list_price) highest_listing_price,
     min(pm.list_price) lowest_listing_price
 from products_mgs pm
@@ -41,7 +41,7 @@ group by cm.category_name
 --Q5
 select 
     cm.category_name,
-    count(cm.category_name) "product_count_over$400",
+    count(*) "product_count_over$400",
     max(pm.list_price) "highest_listing_price_over$400",
     min(pm.list_price) "lowest_listing_price_over$400"
 from products_mgs pm
@@ -53,7 +53,7 @@ group by cm.category_name
 --Q6
 select 
     om.card_type,
-    count(om.card_type) card_order_count,
+    count(*) card_order_count,
     sum(om.tax_amount) card_total_tax
 from orders_mgs om
 group by om.card_type
@@ -62,7 +62,7 @@ having count(om.card_type) > 1
 --Q7
 select 
     cm.category_name,
-    count(cm.category_name) product_count,
+    count(*) product_count,
     max(pm.list_price) highest_listing_price,
     min(pm.list_price) lowest_listing_price
 from products_mgs pm
@@ -74,8 +74,8 @@ having count(cm.category_name) > 2
 --Q8
 select 
     om.card_type,
-    count(om.card_type) card_order_count,
-    sum(om.tax_amount) card_total_tax
+    count(*) hot_card_order_count,
+    sum(om.tax_amount) hot_card_total_tax
 from orders_mgs om
 where om.order_date > '30-MAR-12'
 group by om.card_type

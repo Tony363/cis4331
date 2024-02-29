@@ -1,0 +1,57 @@
+3/1 in lab 
+
+online
+can use own computers
+ 
+41 questions
+    3 sql query questions
+    no true false questions
+    rest are multiple choice (testing concept)
+
+NON-CODING:
+    RDB: concept
+        table vs relation
+        SQL statement(similar to quiz questions, e.g. DDL, DML,DCL statement)
+        PL/SQL
+        sql script
+        primary key
+        foreign key
+        1 to 1
+        1 to many
+        many to many
+ROUND
+TO_CHAR
+DUAL 
+row_num
+e.g.
+    select * from vendors rownum <= 5
+
+COUNT
+MAX
+MIN
+AVG
+SUM
+difference between 
+    HAVING
+    WHERE
+
+implicit, explicit joins
+involves 1-table, N-table, summary query(group by), sql set operators
+will not need to write subquery
+coverage up to today
+reading sql more important than writing sql
+more difficult than quiz questions
+
+join of 2-3 tables(outer join, inner join)
+pattern matching, LIKE '%_....'
+column alias
+table alias
+string concatenation in query
+
+true false null boolean types
+select 3+null
+from dual; - >(null) always null no matter type
+
+select sysdate
+from dual;
+
