@@ -26,10 +26,10 @@ ORDER BY  ename;
 --2.
 --For the above query, limit the query result to be at most 2 rows
 
--- SELECT ename, empno
--- FROM   emp
--- WHERE  mgr = 7839 AND ROWNUM <= 2
--- ORDER BY  ename;
+SELECT ename, empno
+FROM   emp
+WHERE  mgr = 7839 AND ROWNUM <= 2
+ORDER BY  ename;
 
 --3.
 --print all employees' work information and 
@@ -40,12 +40,19 @@ ORDER BY  ename;
 ---- BLAKE works in Dept 30
 
 
--- SELECT ename || ' works in Dept ' || deptno AS  "Work Info"
--- FROM  emp;
+
+SELECT ename || ' works in Dept ' || deptno AS  "Work Info"
+FROM  emp;
 
 --AS optional
--- SELECT ename || ' works in Dept ' || deptno  "Work Info"
--- FROM  emp;
+SELECT ename || ' works in Dept ' || deptno  "Work Info"
+FROM  emp;
 
+SELECT TABLE_NAME
+FROM ALL_TAB_COLUMNS
+WHERE COLUMN_NAME = '';
 
+SELECT table_name
+FROM user_tables
+WHERE table_name LIKE '%_MGS';
 

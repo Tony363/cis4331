@@ -28,9 +28,13 @@ FROM    takes t JOIN course c ON (t.course_id = c.course_id)
 GROUP BY id;
 
 --Q6
-SELECT DISTINCT s.name
-FROM   takes t JOIN student s ON (t.id = s.id)
-	    JOIN course c ON (t.course_id = c.course_id)
+SELECT 
+       DISTINCT s.name
+FROM   takes t 
+JOIN student s 
+       ON (t.id = s.id)
+JOIN course c 
+       ON (t.course_id = c.course_id)
 WHERE  c.dept_name = 'Comp. Sci.';
 
 SELECT DISTINCT s.name, s.dept_name
