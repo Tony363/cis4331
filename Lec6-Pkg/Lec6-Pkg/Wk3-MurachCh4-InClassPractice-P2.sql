@@ -27,7 +27,8 @@ select
     m.ename as "manager"
 from emp e
 left join emp m
-    on e.mgr = m.empno;
+    on e.mgr = m.empno
+where m.ename is not null
 
 
 --5
@@ -45,6 +46,7 @@ inner join invoice_line_items ili on gla.account_number = ili.account_number
 --   that were not used in any purchase
 
 
+
 select 
     gla.account_number, 
     account_description
@@ -53,3 +55,21 @@ from general_ledger_accounts gla
 left outer join invoice_line_items il
     on (gla.account_number = il.account_number)
 where il.account_number is null;
+
+select 
+    gla.account_number, 
+    account_description
+    invoice_id
+from general_ledger_accounts gla 
+left outer join invoice_line_items il
+    on (gla.account_number = il.account_number)
+where il.account_number is null;
+
+select 
+    gla.account_number, 
+    account_description
+    invoice_id
+from general_ledger_accounts gla 
+full outer join invoice_line_items il
+    on (gla.account_number = il.account_number)
+-- where il.account_number is null;

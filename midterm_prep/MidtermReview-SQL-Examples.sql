@@ -115,9 +115,12 @@ FROM  employees e JOIN departments d on (e.department_number = d.department_numb
 
 --left outer join  of 3 tables
 --returns all departments and all employees, but only projects with matching assigned-employee ids
-SELECT last_name, department_name, project_number
-FROM  employees e LEFT JOIN departments d on (e.department_number = d.department_number)
-        LEFT JOIN projects p ON (e.employee_id = p.employee_id);
+SELECT e.last_name, d.department_name, p.project_number
+FROM  employees e 
+LEFT JOIN departments_ex d 
+    on (e.department_number = d.department_number)
+LEFT JOIN projects p 
+    ON (e.employee_id = p.employee_id);
 
 
 --right outer join of 3 tables

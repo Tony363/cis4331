@@ -20,9 +20,10 @@
 --Print for each vendor, the vendor name, the invoice number and invoice total of every invoice of that vendor.
 --   Also print the vendors that don't have any invoice.
 -- Sort the result in increasing order of vendor names.
-SELECT vendor_name, invoice_number, invoice_total
-FROM   vendors LEFT JOIN invoices
+SELECT vendors.vendor_id,vendor_name, invoice_number, invoice_total
+FROM   vendors FULL JOIN invoices
             ON vendors.vendor_id = invoices.vendor_id
+where invoices.vendor_id <> vendors.vendor_id
 ORDER BY vendor_name;
 
 --INNER JOIN query related to the query above.

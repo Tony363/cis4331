@@ -160,8 +160,53 @@ select ili.line_item_description
     || ' , Cost: ' 
     || ili.line_item_amt
     || ',  Paid From Account: '
-    || gla.account_number
+    || gla.account_number "Invoice 100 Items"
 from invoice_line_items ili
 inner join general_ledger_accounts gla
     on (ili.account_number = gla.account_number)
 where ili.invoice_id = 100
+
+
+select 
+    v1.vendor_id,
+    v2.vendor_id
+from vendors v1
+right outer join vendors v2
+    on (v1.vendor_id = v2.default_account_number)
+    
+    select
+        v.vendor_id,
+        v.vendor_state,
+        v.vendor_contact_last_name
+    from vendors v
+    where v.vendor_state = 'WI'
+union
+    select
+        v.vendor_id,
+        v.vendor_state,
+        v.vendor_contact_last_name
+    from vendors v
+    where v.vendor_state = 'CA'
+        and v.vendor_contact_last_name like '%ren'
+
+
+CREATE TABLE emp1 (
+    emp_id NUMBER PRIMARY KEY,
+    sal NUMBER(8, 2)
+);
+INSERT INTO emp1 (emp_id,sal) 
+VALUES (7369,1250);
+INSERT INTO emp1 (emp_id,sal) 
+VALUES (7421,1300);
+INSERT INTO emp1 (emp_id,sal) 
+VALUES (7566,2250);
+
+select sal + NULL
+from emp1
+where emp_id = 7566
+
+CREATE TABLE emp1 (
+    emp_id NUMBER PRIMARY KEY,
+    Dept_id NUMBER FOREIGN KEY
+    sal NUMBER(8, 2)
+);

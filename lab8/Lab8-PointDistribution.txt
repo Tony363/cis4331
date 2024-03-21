@@ -1,0 +1,44 @@
+--Lab 8 Point Distribution
+
+--Q1 7 points
+
+
+--Q2 5 points
+
+--Q3 5 points
+
+--Q4 5 points
+
+
+--Q5 12 points
+
+--Q6 5 points
+
+--Q7 5 points
+
+--Q8 9 points
+
+
+--Q9 2 points
+
+
+----DDL Part
+
+
+--Q11 21 points
+
+
+--Q12 6 points
+
+
+--Q13 5 points
+
+
+--Q14 5 points
+
+--Q15 5 points
+
+
+
+
+
