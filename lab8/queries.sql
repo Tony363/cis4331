@@ -107,6 +107,7 @@ drop table event;
 
 --Q13
 alter table event add event_date_ix number;
+-- CREATE INDEX event_date_ix ON event (date);
 
 --Q14
 CREATE SEQUENCE menu_id_seq;
