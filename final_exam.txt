@@ -1,0 +1,34 @@
+take home exam open for 2 days (project based)
+no material from midterm, first half of course
+remember naming convention
+shoe primary key foreign,
+follow default foreign key (just like in part 3)
+points weighted roughly the same
+
+FOCUS ON DATABASE DESIGN
+office hours
+questions more complex in exam than class examples
+
+1. 
+given txt desc of db system to be built(more like lab 9)
+==> ERD
+
+2.
+follow ERD, make ERD in Q1 to relational schema
+
+3. create tables in Q2 (, just create tables)
+implement relational schema in Q2 to work in oracle
+
+4. 
+Normalization 
+1st, 2nd, 3rd step by step normal form
+function dependency sets
+will ask about update(modification), delete, insertion anomaly problems
+write what the functional dependency for each table through out process of normalization
+
+5. 
+Transaction concurrency control
+come up precedence graph,
+come up with conflict serialization
+1 equivalent serial schedule
+more than 3 transactions
