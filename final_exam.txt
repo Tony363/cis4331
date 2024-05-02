@@ -1,7 +1,7 @@
 take home exam open for 2 days (project based)
 no material from midterm, first half of course
 remember naming convention
-shoe primary key foreign,
+show primary key foreign,
 follow default foreign key (just like in part 3)
 points weighted roughly the same
 
