@@ -11,38 +11,39 @@ drop table COUNTY;
 
 CREATE TABLE COUNTY(
     CountyID INT NOT NULL,
-    CountyName VARCHAR(50) NOT NULL,
+    CountyName VARCHAR(50) NOT NULL UNIQUE,
+    CountyPopulation INT NOT NULL,
     PRIMARY KEY (CountyID)
 );
 
-insert into county (CountyID, CountyName)    
-values (1, 'Orange');
-insert into county (CountyID, CountyName)    
-values (2, 'Philadelphia');
-insert into county (CountyID, CountyName)    
-values (3, 'wtf1');
+insert into county (CountyID, CountyName, CountyPopulation)    
+values (1, 'Orange',3000);
+insert into county (CountyID, CountyName, CountyPopulation)    
+values (2, 'Philadelphia',2000);
+insert into county (CountyID, CountyName, CountyPopulation)    
+values (3, 'wtf1',3000);
 
 CREATE TABLE CITY(
     CityID INT NOT NULL,
     CityName VARCHAR(50) NOT NULL,
-    Population INT NOT NULL,
+    CityPopulation INT NOT NULL,
     CountyID INT NOT NULL,
     PRIMARY KEY (CityID),
     FOREIGN KEY (CountyID) REFERENCES COUNTY(CountyID)
 );
 
-insert into city (CityID, CityName, Population, CountyID)
-values (1, 'Philadelphia', 100000, 1);
-insert into city (CityID, CityName, Population, CountyID)
+insert into city (CityID, CityName, CityPopulation, CountyID)
+values (1, 'Philadelphia', 1000, 1);
+insert into city (CityID, CityName, CityPopulation, CountyID)
 values (2, 'Los Angeles', 200000, 2);
-insert into city (CityID, CityName, Population, CountyID)
-values (3, 'San Francisco', 300000, 1);
-insert into city (CityID, CityName, Population, CountyID)
-values (4, 'San Diego', 400000, 1);
+insert into city (CityID, CityName, CityPopulation, CountyID)
+values (3, 'San Francisco', 1000, 1);
+insert into city (CityID, CityName, CityPopulation, CountyID)
+values (4, 'San Diego', 1000, 1);
 
 CREATE TABLE ZIPCODE (
     ZipID INT NOT NULL,
-    ZipCode VARCHAR(10) NOT NULL,
+    ZipCode VARCHAR(10) NOT NULL UNIQUE,
     CityID INT NOT NULL,
     PRIMARY KEY (ZipID),
     FOREIGN KEY (CityID) REFERENCES CITY(CityID)
@@ -61,7 +62,7 @@ values (4, '19107', 1);
 
 CREATE TABLE RESIDENTS (
     ResID INT NOT NULL,
-    SSN VARCHAR(20) NOT NULL,
+    SSN VARCHAR(20) NOT NULL UNIQUE,
     FirstName VARCHAR(50) NOT NULL,
     LastName VARCHAR(50) NOT NULL,
     StreetAddress VARCHAR(50) NOT NULL,
@@ -76,9 +77,9 @@ values (1, '123-45-6789', 'Tony', 'Siu', '1234 Main St', to_date('1999-01-01','Y
 insert into residents (ResID, SSN, FirstName, LastName, StreetAddress, Birthdate, ZipID)
 values (2, '987-65-4321', 'John', 'Doe', '4321 Main St', to_date('1999-01-01','YYYY-MM-DD'), 2);
 insert into residents (ResID, SSN, FirstName, LastName, StreetAddress, Birthdate, ZipID)
-values (3, '123-45-6789', 'Jane', 'Doe', '1234 Main St', to_date('1999-01-01','YYYY-MM-DD'), 3);
+values (3, '123-45-6710', 'Jane', 'Doe', '1234 Main St', to_date('1999-01-01','YYYY-MM-DD'), 3);
 insert into residents (ResID, SSN, FirstName, LastName, StreetAddress, Birthdate, ZipID)
-values (4, '987-65-4321', 'John', 'Doe', '4321 Main St', to_date('1999-01-01','YYYY-MM-DD'), 4);
+values (4, '987-65-4322', 'John', 'Doe', '4321 Main St', to_date('1999-01-01','YYYY-MM-DD'), 4);
 
 
 CREATE TABLE TESTINGCENTRE(
